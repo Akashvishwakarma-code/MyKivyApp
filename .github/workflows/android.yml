@@ -11,7 +11,7 @@ jobs:
     steps:
     # Checkout the code
     - name: Checkout code
-      uses: actions/checkout@v3  # Update to v3 for better performance
+      uses: actions/checkout@v3  # Update to v3 for performance improvements
 
     # Get the current date for cache invalidation
     - name: Get Date
@@ -23,7 +23,7 @@ jobs:
     - name: Cache Buildozer global directory
       uses: actions/cache@v2
       with:
-        path: ~/.buildozer
+        path: ~/.buildozer  # Correct path for caching Buildozer global directory
         key: buildozer-global-${{ hashFiles('buildozer.spec') }}
         restore-keys: |
           buildozer-global-
@@ -57,4 +57,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: package
-        path: ${{ steps.buildozer.outputs.filename }}
+        path: path/to/your/output.apk  # Adjust this to the actual output path of your APK
